@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Heart, Stethoscope, Activity, Users, Shield, Award } from "lucide-react";
+import { Stethoscope, Activity, Users, Shield, Award } from "lucide-react";
+import HeroSlider from "@/components/hospital/HeroSlider";
 
 export default function Home() {
   const features = [
@@ -65,12 +66,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="relative aspect-square lg:aspect-auto lg:h-[500px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl" />
-              <div className="absolute inset-4 bg-background rounded-xl flex items-center justify-center">
-                <Heart className="h-32 w-32 text-primary/20" />
-              </div>
-            </div>
+            <HeroSlider />
           </div>
         </div>
       </section>
