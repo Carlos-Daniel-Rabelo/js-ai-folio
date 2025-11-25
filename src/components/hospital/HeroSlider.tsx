@@ -1,34 +1,39 @@
 import { useEffect, useState } from "react";
-import { Heart, Stethoscope, Activity, Users, Shield, Award } from "lucide-react";
+import hospitalCare from "@/assets/hospital-care.jpg";
+import hospitalSpecialties from "@/assets/hospital-specialties.jpg";
+import hospitalTechnology from "@/assets/hospital-technology.jpg";
+import hospitalTeam from "@/assets/hospital-team.jpg";
+import hospitalSafety from "@/assets/hospital-safety.jpg";
+import hospitalCertification from "@/assets/hospital-certification.jpg";
 
 const slides = [
   {
-    icon: Heart,
+    image: hospitalCare,
     title: "Cuidado Humanizado",
     gradient: "from-red-500/20 to-pink-500/20"
   },
   {
-    icon: Stethoscope,
+    image: hospitalSpecialties,
     title: "Especialidades Médicas",
     gradient: "from-primary/20 to-blue-500/20"
   },
   {
-    icon: Activity,
+    image: hospitalTechnology,
     title: "Tecnologia Avançada",
     gradient: "from-green-500/20 to-emerald-500/20"
   },
   {
-    icon: Users,
+    image: hospitalTeam,
     title: "Equipe Qualificada",
     gradient: "from-accent/20 to-green-600/20"
   },
   {
-    icon: Shield,
+    image: hospitalSafety,
     title: "Segurança e Qualidade",
     gradient: "from-primary/20 to-indigo-500/20"
   },
   {
-    icon: Award,
+    image: hospitalCertification,
     title: "Certificação Internacional",
     gradient: "from-yellow-500/20 to-orange-500/20"
   }
@@ -45,22 +50,19 @@ export default function HeroSlider() {
     return () => clearInterval(timer);
   }, []);
 
-  const CurrentIcon = slides[currentSlide].icon;
-
   return (
-    <div className="relative aspect-square lg:aspect-auto lg:h-[500px]">
+    <div className="relative aspect-square lg:aspect-auto lg:h-[500px] rounded-2xl overflow-hidden">
       <div 
-        className={`absolute inset-0 bg-gradient-to-br ${slides[currentSlide].gradient} rounded-2xl transition-all duration-1000 ease-in-out`}
+        className={`absolute inset-0 bg-gradient-to-br ${slides[currentSlide].gradient} transition-all duration-1000 ease-in-out`}
       />
-      <div className="absolute inset-4 bg-background/95 backdrop-blur-sm rounded-xl flex flex-col items-center justify-center gap-6 overflow-hidden">
-        <div className="relative">
-          <CurrentIcon 
-            className="h-32 w-32 text-primary animate-fade-in" 
-            strokeWidth={1.5}
-          />
-          <div className="absolute inset-0 h-32 w-32 text-primary/30 blur-xl animate-pulse" />
-        </div>
-        <h3 className="text-2xl font-semibold text-foreground animate-fade-in text-center px-4">
+      <img
+        src={slides[currentSlide].image}
+        alt={slides[currentSlide].title}
+        className="absolute inset-0 w-full h-full object-cover opacity-90 transition-opacity duration-1000"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent" />
+      <div className="absolute bottom-16 left-0 right-0 px-6">
+        <h3 className="text-3xl lg:text-4xl font-bold text-foreground animate-fade-in text-center drop-shadow-lg">
           {slides[currentSlide].title}
         </h3>
       </div>
