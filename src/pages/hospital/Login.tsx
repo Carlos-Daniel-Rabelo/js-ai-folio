@@ -10,8 +10,8 @@ import { z } from "zod";
 import { toast } from "sonner";
 
 const loginSchema = z.object({
-  email: z.string().email("E-mail inválido").max(255),
-  password: z.string().min(6, "Senha deve ter no mínimo 6 caracteres"),
+  email: z.string().min(14, "CNPJ inválido").max(18, "CNPJ inválido"),
+  password: z.string().min(1, "Senha é obrigatória"),
   remember: z.boolean().optional(),
 });
 
@@ -25,6 +25,10 @@ export default function Login() {
   const onSubmit = (data: LoginFormData) => {
     console.log("Login data:", data);
     toast.success("Login realizado com sucesso!");
+    // Redirecionar para dashboard
+    setTimeout(() => {
+      window.location.href = "/dashboard";
+    }, 1000);
   };
 
   return (
@@ -33,19 +37,19 @@ export default function Login() {
         <div className="mx-auto max-w-md">
           <Card>
             <CardHeader className="space-y-1">
-              <CardTitle className="text-2xl font-bold text-center">Conecte-se</CardTitle>
+              <CardTitle className="text-2xl font-bold text-center">Acesse sua Jornada SESI</CardTitle>
               <CardDescription className="text-center">
-                Entre com suas credenciais para acessar sua conta
+                Entre com seu CNPJ e senha para acompanhar seus serviços
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">E-mail ou CPF</Label>
+                  <Label htmlFor="email">CNPJ da Empresa</Label>
                   <Input
                     id="email"
                     type="text"
-                    placeholder="seu@email.com ou 000.000.000-00"
+                    placeholder="00.000.000/0000-00"
                     {...register("email")}
                   />
                   {errors.email && (
