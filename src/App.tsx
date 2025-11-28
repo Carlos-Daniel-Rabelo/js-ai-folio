@@ -3,13 +3,14 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HospitalLayout from "./pages/hospital/HospitalLayout";
-import Home from "./pages/hospital/Home";
-import Services from "./pages/hospital/Services";
-import Products from "./pages/hospital/Products";
-import Contact from "./pages/hospital/Contact";
+import SesiLayout from "./pages/sesi/SesiLayout";
+import Dashboard from "./pages/sesi/Dashboard";
+import Jornada from "./pages/sesi/Jornada";
+import UploadM1 from "./pages/sesi/UploadM1";
+import Contatos from "./pages/sesi/Contatos";
+import Treinamentos from "./pages/sesi/Treinamentos";
+import Mensagens from "./pages/sesi/Mensagens";
 import Login from "./pages/hospital/Login";
-import Register from "./pages/hospital/Register";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,14 +22,16 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route element={<HospitalLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/servicos" element={<Services />} />
-            <Route path="/produtos" element={<Products />} />
-            <Route path="/contato" element={<Contact />} />
-          </Route>
           <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<Register />} />
+          <Route element={<SesiLayout />}>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/jornada" element={<Jornada />} />
+            <Route path="/upload-m1" element={<UploadM1 />} />
+            <Route path="/contatos" element={<Contatos />} />
+            <Route path="/treinamentos" element={<Treinamentos />} />
+            <Route path="/mensagens" element={<Mensagens />} />
+          </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
